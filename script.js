@@ -45,9 +45,11 @@ function checkImg(img) {
   ).then(({ data: { text } }) => {
     textFromImg.push(text.replace(/[^0-9]/g, ""));
     textFromImg = textFromImg.toString();
+    console.log(textFromImg);
     function result() {
       for (element of blockedBankAccounts) {
-        if (textFromImg === element) {
+        if (textFromImg.includes(element)) {
+          textFromImg = element;
           img.style.border = "4px solid red";
           img.parentElement.appendChild(
             p
